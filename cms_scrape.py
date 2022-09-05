@@ -17,7 +17,7 @@ for lnk in links:
     soup = BeautifulSoup(source, 'lxml')
 
 # create output file
-csv_file = open('data/downloads/rotten_tomatoes.csv', 'w')
+csv_file = open('data/rotten_tomatoes.csv', 'w')
 
 csv_writer = csv.writer(csv_file)
 csv_writer.writerow(['movie_title', 'critic_consensus', 'rt_score', 'prod_year', 'movie_num'])
@@ -30,7 +30,7 @@ for entry in soup.find_all('div', class_ = 'row countdown-item'):
     rt_score = entry.find("span", class_='tMeterScore').text
     prod_year = entry.find('span', class_ ='subtle start-year').text
     movie_num = entry.find('div', class_= 'countdown-index').text
-      
+    
     csv_writer.writerow([movie_title, critic_consensus, rt_score, prod_year, movie_num])
 
 # close the file and save
