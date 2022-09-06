@@ -4,17 +4,11 @@ import requests
 import csv 
 
 #Url links
-links = [
-    'https://editorial.rottentomatoes.com/guide/100-best-classic-movies/', 
-    'https://editorial.rottentomatoes.com/guide/100-best-classic-movies/2/', 
-    'https://editorial.rottentomatoes.com/guide/100-best-classic-movies/3/', 
-    'https://editorial.rottentomatoes.com/guide/100-best-classic-movies/4/',
-    'https://editorial.rottentomatoes.com/guide/100-best-classic-movies/5/'\
-        ]
+url = 'https://editorial.rottentomatoes.com/guide/100-best-classic-movies/ '
 
-for lnk in links:
-    source = requests.get(lnk).text 
-    soup = BeautifulSoup(source, 'lxml')
+result = requests.get(url)
+source = result.content
+soup = BeautifulSoup(source, 'lxml')
 
 # create output file
 csv_file = open('data/rotten_tomatoes.csv', 'w')
